@@ -1,4 +1,5 @@
 {% load static %}
+{% load unicorn %}
 <!DOCTYPE html>
 <html lang="de">
 
@@ -6,32 +7,34 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'fa/css/all.min.css' %}">
-
+    {% unicorn_scripts %}
     <title>Django + Bootstrap</title>
 </head>
 
 <body class="pt-5">
+
     {% include "navbar.html" %}
 
-<main class="container mt-4">
-    <div class="row">
-         <h1 class="display-4">
-            {% block title %}
-            {% endblock title %}
-         </h1>
-        <p class="lead">
-            {% block subtitle %}
-            {% endblock subtitle %}
-        </p>
-        <hr class="mb-4">
-    </div>
-    <div class="row">
-        {% block content %}
-        {% endblock content %}
-    </div>
-</main>
+    <main class="container mt-4">
+        <div class="row">
+             <h1 class="display-4">
+                {% block title %}
+                {% endblock title %}
+             </h1>
+            <p class="lead">
+                {% block subtitle %}
+                {% endblock subtitle %}
+            </p>
+            <hr class="mb-4">
+        </div>
+        <div class="row">
+            {% block content %}
+            {% endblock content %}
+        </div>
+    </main>
 
-<script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    {% csrf_token %}
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 </body>
 
 </html>
