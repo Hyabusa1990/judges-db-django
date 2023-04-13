@@ -16,11 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from two_factor.urls import urlpatterns as tf_urls
 
 urlpatterns = [
     # DASHBOARD URLS
     path('', include("dashboard.urls")),
 
+    # MFA URLS
+    path('', include(tf_urls)),
+    path("account/", include("django.contrib.auth.urls")),
     path('admin/', admin.site.urls),
     path("unicorn/", include("django_unicorn.urls")),
 ]
