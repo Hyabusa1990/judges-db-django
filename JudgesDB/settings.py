@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'two_factor',
     # APPS
     'dashboard',
+    'regions',
 ]
 
 MIDDLEWARE = [
