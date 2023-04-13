@@ -24,6 +24,7 @@ urlpatterns = [
 
     # MFA URLS
     path('', include(tf_urls)),
+    path("account/", include("django.contrib.auth.urls")),
     path('admin/', admin.site.urls),
     path("unicorn/", include("django_unicorn.urls")),
 ]

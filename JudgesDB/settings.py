@@ -133,3 +133,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # MFA Settings
 LOGIN_URL = 'two_factor:login'
+LOGIN_REDIRECT_URL = 'dashboard.dashboard'
+LOGOUT_REDIRECT_URL = 'two_factor:login'
