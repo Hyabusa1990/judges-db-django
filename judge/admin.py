@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import Judge, Club
 
-# Register your models here.
+admin.site.register(Judge)
+admin.site.register(Club)

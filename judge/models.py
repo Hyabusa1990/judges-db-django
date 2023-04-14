@@ -7,6 +7,9 @@ from django.dispatch import receiver
 class Club(models.Model):
     name = models.CharField(max_length=254)
 
+    def __str__(self):
+        return self.name
+
 
 class Judge(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -17,6 +20,9 @@ class Judge(models.Model):
     phone = models.CharField(max_length=50, blank=True, default='')
     club = models.ForeignKey(
         Club, on_delete=models.PROTECT, blank=True, null=True)
+
+    def __str__(self):
+        return self.user.get_full_name()
 
 
 @receiver(post_save, sender=User)

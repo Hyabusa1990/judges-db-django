@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     # APPS
     'dashboard',
     'regions',
+    'judge',
 ]
 
 MIDDLEWARE = [
