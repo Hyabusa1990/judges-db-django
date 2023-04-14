@@ -21,6 +21,8 @@ from two_factor.urls import urlpatterns as tf_urls
 urlpatterns = [
     # DASHBOARD URLS
     path('', include("dashboard.urls")),
+    # JUDGE URLS
+    path('judge/', include("judge.urls")),
 
     # MFA URLS
     path('', include(tf_urls)),
