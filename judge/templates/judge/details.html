@@ -1,0 +1,13 @@
+{% load i18n %}
+{% extends "base.html" %}
+{% block title %}
+    {% trans 'DetailTitle' %}
+{% endblock title %}
+
+{% block subtitle %}
+   {% trans 'DetailSubTitle' %}
+{% endblock subtitle %}
+
+{% block content %}
+    {% unicorn 'details' user=%}
+{% endblock content %}
