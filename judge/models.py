@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from regions.models import Region
 
 
 class Club(models.Model):
@@ -20,6 +21,7 @@ class Judge(models.Model):
     phone = models.CharField(max_length=50, blank=True, default='')
     club = models.ForeignKey(
         Club, on_delete=models.PROTECT, blank=True, null=True)
+    region = models.ForeignKey(Region, on_delete=models.PROTECT, default=1)
 
     def __str__(self):
         return self.user.get_full_name()

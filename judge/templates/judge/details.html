@@ -9,5 +9,46 @@
 {% endblock subtitle %}
 
 {% block content %}
-    {% unicorn 'details' user=%}
+    <h1 class="display-6 mb-2">{% trans 'PersonalDataTitle' %}</h1>
+    <div class="row">
+        <div class="col col-lg-2 mb-2 fw-bold">{% trans 'FirstNameLabel' %}:</div>
+        <div class="col col-lg-4 mb-2 bg-white flex-fill rounded-1">{{ object.first_name }}</div>
+        <div class="col col-lg-2 mb-2 fw-bold">{% trans 'LastNameLabel' %}:</div>
+        <div class="col col-lg-4 mb-2 bg-white flex-fill rounded-1">{{ object.last_name }}</div>
+        
+    </div>
+    <div class="row">
+        <div class="col col-lg-2 mb-2 fw-bold">{% trans 'BirthdayLabel' %}:</div>
+        <div class="col col-lg-10 mb-2 bg-white flex-fill rounded-1">{{ object.judge.birthday }}</div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col col-lg-2 mb-2 fw-bold">{% trans 'EMailLabel' %}:</div>
+        <div class="col col-lg-4 mb-2 bg-white flex-fill rounded-1">{{ object.email }}</div>
+        <div class="col col-lg-2 mb-2 fw-bold">{% trans 'PhoneLabel' %}:</div>
+        <div class="col col-lg-4 mb-2 bg-white flex-fill rounded-1">{{ object.judge.phone }}</div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col col-lg-2 mb-2 fw-bold">{% trans 'StreetLabel' %}:</div>
+        <div class="col col-lg-10 mb-2 bg-white flex-fill rounded-1">{{ object.judge.street }}</div>
+    </div>
+    <div class="row">
+        <div class="col col-lg-2 mb-2 fw-bold">{% trans 'PostcodeLabel' %}:</div>
+        <div class="col col-lg-4 mb-2 bg-white flex-fill rounded-1">{{ object.judge.postcode }}</div>
+        <div class="col col-lg-2 mb-2 fw-bold">{% trans 'CityLabel' %}:</div>
+        <div class="col col-lg-4 mb-2 bg-white flex-fill rounded-1">{{ object.judge.city }}</div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col col-lg-2 mb-2 fw-bold">{% trans 'ClubLabel' %}:</div>
+        <div class="col col-lg-4 mb-2 bg-white flex-fill rounded-1">{{ object.judge.club }}</div>
+        <div class="col col-lg-2 mb-2 fw-bold">{% trans 'RegionLabel' %}:</div>
+        <div class="col col-lg-4 mb-2 bg-white flex-fill rounded-1">{{ object.judge.region }}</div>
+    </div>
+
+    <h1 class="display-6 mb-2">{% trans 'LicencesDataTitle' %}</h1>
+    <div class="row">
+
+    </div>
 {% endblock content %}
