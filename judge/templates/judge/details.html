@@ -9,6 +9,7 @@
 {% endblock subtitle %}
 
 {% block content %}
+    <a href="{% url 'judge.edit' user.pk %}" class="btn btn-sm btn-outline-success float-end"><i class="fa fa-edit"></i> Bearbeiten</a>
     <h1 class="display-6 mb-2">{% trans 'PersonalDataTitle' %}</h1>
     <div class="row">
         <div class="col col-lg-2 mb-2 fw-bold">{% trans 'FirstNameLabel' %}:</div>
