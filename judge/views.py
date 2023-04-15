@@ -14,7 +14,7 @@ class JudgeDetailView(UserPassesTestMixin, DetailView):
     template_name = "judge/details.html"
 
     # Check if LoggedIn-User has view perm or is own
-    # TODO: Check if LoggedIn-User
+    # TODO: Check if LoggedIn-User is Manager of Judge
     def test_func(self):
         if self.request.user.has_perm('judge.view_judge') or self.request.user.pk is self.get_object().pk:
             return True
