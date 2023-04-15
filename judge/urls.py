@@ -1,15 +1,15 @@
 from django.urls import path
-from judge.views import details
+from judge.views import JudgeDetailView
 
 urlpatterns = [
     # List and Search all Judges
-    path("", details, name="judge.list"),
+    path("", JudgeDetailView.as_view(), name="judge.list"),
     # Create new Judge
-    path("create/", details, name="judge.create"),
+    path("create/", JudgeDetailView.as_view(), name="judge.create"),
     # Show Details of Judge
-    path("<pk>/", details, name="judge.details"),
+    path("<pk>/", JudgeDetailView.as_view(), name="judge.details"),
     # Edit Details of Judge
-    path("edit/<pk>/", details, name="judge.edit"),
+    path("edit/<pk>/", JudgeDetailView.as_view(), name="judge.edit"),
     # Delete Judge
-    path("delete/<pk>/", details, name="judge.delete"),
+    path("delete/<pk>/", JudgeDetailView.as_view(), name="judge.delete"),
 ]
