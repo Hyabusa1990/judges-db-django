@@ -2,9 +2,9 @@ from django.http import HttpResponseForbidden
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 from django.utils.decorators import method_decorator
-from django.views.generic import DetailView
+from django.views.generic import DetailView, TemplateView
 from django.contrib.auth.mixins import UserPassesTestMixin
 
 
@@ -28,3 +28,8 @@ class JudgeDetailView(UserPassesTestMixin, DetailView):
         # else -> deny
         else:
             return False
+
+
+@method_decorator(permission_required('judge.view_judge'), name="dispatch")
+class JudgeListView(TemplateView):
+    template_name = "judge/list.html"

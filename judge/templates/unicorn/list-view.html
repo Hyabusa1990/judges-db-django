@@ -1,0 +1,45 @@
+{% load i18n %}
+{% load unicorn %}
+<div>
+  <div class="card">
+    <div class="card-header">
+      {% trans 'ListFilterTitle' %}
+      <button class="btn btn-sm btn-outline-dark float-end" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter"><i class="fa-solid fa-filter"></i></button>
+    </div>
+    <div class="collapse" id="collapseFilter">
+      <div class="card-body">
+        {% unicorn 'filter' parent = view %}
+      </div>
+    </div>
+  </div>
+  <div class="card mt-2">
+    <div class="card-header">
+      {% trans 'ListJudgesTitle' %}
+    </div>
+    <div class="card-body">
+      <table class="table table-striped">
+        <tr>
+          <th scope="col">
+            {% trans 'ListTableNameTitle' %}
+          </th>
+          <th scope="col">
+            {% trans 'ListTableRegionTitle' %}
+          </th>
+          <th scope="col">
+            {% trans 'ListTableActionTitle' %}
+          </th>
+        </tr>
+        {% for usr in user_filtered.object_list %}
+          <tr>
+            <td>{{ usr.get_full_name }}</td>
+            <td>{{ usr.judge.region.tag }}</td>
+            <td>
+                <a href="{% url 'judge.details' usr.pk %}"
+                class="btn btn-sm btn-outline-success float-end"><i class="fa fa-address-card"></i> Details</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+</div>

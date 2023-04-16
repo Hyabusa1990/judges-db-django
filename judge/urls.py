@@ -1,9 +1,9 @@
 from django.urls import path
-from judge.views import JudgeDetailView
+from judge.views import JudgeDetailView, JudgeListView
 
 urlpatterns = [
     # List and Search all Judges
-    path("", JudgeDetailView.as_view(), name="judge.list"),
+    path("", JudgeListView.as_view(), name="judge.list"),
     # Create new Judge
     path("create/", JudgeDetailView.as_view(), name="judge.create"),
     # Show Details of Judge

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load unicorn %}
+{% block title %}
+  {% trans 'ListTitle' %}
+{% endblock %}
+{% block subtitle %}
+  {% trans 'ListSubTitle' %}
+{% endblock %}
+{% block content %}
+  {% unicorn 'list-view' %}
+{% endblock %}
