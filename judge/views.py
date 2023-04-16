@@ -13,10 +13,18 @@ class JudgeDetailView(UserPassesTestMixin, DetailView):
     model = User
     template_name = "judge/details.html"
 
-    # Check if LoggedIn-User has view perm or is own
-    # TODO: Check if LoggedIn-User is Manager of Judge
+    # Check if LoggedIn-User has view permissions
     def test_func(self):
-        if self.request.user.has_perm('judge.view_judge') or self.request.user.pk is self.get_object().pk:
+        # if it's own data -> allow
+        if self.request.user.pk is self.get_object().pk:
             return True
+        # if it's an SuperUser -> allow
+        elif self.request.user.is_superuser:
+            return True
+        # if it's an manager -> allow
+        # TODO: check its an manager of the region of the judge
+        elif self.request.user.has_perm('judge.view_judge'):
+            return True
+        # else -> deny
         else:
             return False
