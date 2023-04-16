@@ -1,22 +1,45 @@
 from django_unicorn.components import UnicornView
 from django.contrib.auth.models import User
-from django.core.paginator import Paginator
 
 
 class ListViewView(UnicornView):
-    item_per_page = 20
-    user_filtered = Paginator(User.objects.none, item_per_page)
-    user_displayed = User.objects.none
-    filter = {}
+    user_filtered = User.objects.none()
+    filter = []
+
+    operator_options = ["contains", "startswith", "endswith", "iexact"]
+
+    filter_first_name = ""
+    filter_opt_first_name = "contains"
+    filter_first_name_en = False
+
+    filter_last_name = ""
+    filter_opt_last_name = "startswith"
+    filter_last_name_en = False
+
+    filter_email = ""
+    filter_opt_email = "contains"
+    filter_email_en = False
+
+    filter_region = ""
+    filter_opt_region = "contains"
+    filter_region_en = False
+
+    filter_club = ""
+    filter_opt_club = "contains"
+    filter_club_en = False
+
+    filter_city = ""
+    filter_opt_city = "contains"
+    filter_city_en = False
+
+    filter_postcode = ""
+    filter_opt_postcode = "contains"
+    filter_postcode_en = False
 
     def filter_judge(self):
         usr = User.objects.all()
         # TODO: ADD filters on QuerySet
-        self.user_filtered = Paginator(usr, self.item_per_page)
-        self.update_displayed_user()
-
-    def update_displayed_user(self):
-        self.user_displayed = self.user_filtered.object_list
+        self.user_filtered = usr.filter(judge__street__contains="")
 
     def mount(self):
         self.filter_judge()

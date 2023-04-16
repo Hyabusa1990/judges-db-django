@@ -4,11 +4,54 @@
   <div class="card">
     <div class="card-header">
       {% trans 'ListFilterTitle' %}
-      <button class="btn btn-sm btn-outline-dark float-end" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter"><i class="fa-solid fa-filter"></i></button>
+      <button class="btn btn-sm btn-outline-dark float-end" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter"><i class="fa-solid fa-bars"></i></button>
     </div>
     <div class="collapse" id="collapseFilter">
       <div class="card-body">
-        {% unicorn 'filter' parent = view %}
+        <div>
+            <!-- First Name Filter -->
+            <div class="row border rounded mt-1">
+              <div class="col col-lg-2 mb-2 mt-4">
+                <input unicorn:model="filter_first_name_en" class="form-check-input" type="checkbox" value="" id="firstNameCheckInput" />
+                <label class="form-check-label" for="firstNameCheckInput">{% trans 'firstNameFilter' %}</label>
+              </div>
+              <div class="col col-lg-2 mb-2">
+                <label for="firstNameOperatorInput" class="form-label">{% trans 'filterTypLabel' %}</label>
+                <select unicorn:model="filter_opt_first_name" class="form-select" id="firstNameOperatorInput">
+                  {% for option in operator_options %}
+                    <option value="{{ option }}">
+                      {% trans option %}
+                    </option>
+                  {% endfor %}
+                </select>
+              </div>
+              <div class="col col-lg-8 mb-2">
+                <label for="firstNameValueInput" class="form-label">{% trans 'filterValueLabel' %}</label>
+                <input unicorn:model="filter_first_name" type="input" class="form-control" id="firstNameValueInput" />
+              </div>
+            </div>
+            <!-- Last Name Filter -->
+            <div class="row border rounded mt-1">
+              <div class="col col-lg-2 mb-2 mt-4">
+                <input unicorn:model="filter_last_name_en" class="form-check-input" type="checkbox" value="" id="lastNameCheckInput" />
+                <label class="form-check-label" for="lastNameCheckInput">{% trans 'LastNameFilter' %}</label>
+              </div>
+              <div class="col col-lg-2 mb-2">
+                <label for="lastNameOperatorInput" class="form-label">{% trans 'filterTypLabel' %}</label>
+                <select unicorn:model="filter_opt_last_name" class="form-select" id="lastNameOperatorInput">
+                  {% for option in operator_options %}
+                    <option value="{{ option }}">
+                      {% trans option %}
+                    </option>
+                  {% endfor %}
+                </select>
+              </div>
+              <div class="col col-lg-8 mb-2">
+                <label for="lastNameValueInput" class="form-label">{% trans 'filterValueLabel' %}</label>
+                <input unicorn:model="filter_last_name" type="input" class="form-control" id="lastNameValueInput" />
+              </div>
+            </div>
+          </div>
       </div>
     </div>
   </div>
@@ -29,7 +72,7 @@
             {% trans 'ListTableActionTitle' %}
           </th>
         </tr>
-        {% for usr in user_filtered.object_list %}
+        {% for usr in user_filtered %}
           <tr>
             <td>{{ usr.get_full_name }}</td>
             <td>{{ usr.judge.region.tag }}</td>

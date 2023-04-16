@@ -12,6 +12,7 @@
 </head>
 
 <body class="pt-5">
+    {% csrf_token %}
 
     {% include "navbar.html" %}
 
@@ -33,7 +34,7 @@
         </div>
     </main>
 
-    {% csrf_token %}
+    
     <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 </body>
 
