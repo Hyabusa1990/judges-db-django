@@ -22,6 +22,8 @@ class Judge(models.Model):
     club = models.ForeignKey(
         Club, on_delete=models.PROTECT, blank=True, null=True)
     region = models.ForeignKey(Region, on_delete=models.PROTECT, default=1)
+    managed_regions = models.ManyToManyField(
+        Region, related_name="managers")
 
     def __str__(self):
         return self.user.get_full_name()

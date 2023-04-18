@@ -4,53 +4,231 @@
   <div class="card">
     <div class="card-header">
       {% trans 'ListFilterTitle' %}
-      <button class="btn btn-sm btn-outline-dark float-end" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter"><i class="fa-solid fa-bars"></i></button>
+      <button class="btn btn-sm btn-outline-dark float-end" unicorn:click="toggle_filters" type="button"><i class="fa-solid fa-bars"></i></button>
     </div>
-    <div class="collapse" id="collapseFilter">
+    {% if show_filters %}
+      <div  class="collapse show">
+    {% else %}
+      <div  class="collapse">
+    {% endif %}
       <div class="card-body">
         <div>
-            <!-- First Name Filter -->
-            <div class="row border rounded mt-1">
-              <div class="col col-lg-2 mb-2 mt-4">
-                <input unicorn:model="filter_first_name_en" class="form-check-input" type="checkbox" value="" id="firstNameCheckInput" />
-                <label class="form-check-label" for="firstNameCheckInput">{% trans 'firstNameFilter' %}</label>
-              </div>
-              <div class="col col-lg-2 mb-2">
-                <label for="firstNameOperatorInput" class="form-label">{% trans 'filterTypLabel' %}</label>
-                <select unicorn:model="filter_opt_first_name" class="form-select" id="firstNameOperatorInput">
-                  {% for option in operator_options %}
-                    <option value="{{ option }}">
-                      {% trans option %}
-                    </option>
-                  {% endfor %}
-                </select>
-              </div>
-              <div class="col col-lg-8 mb-2">
-                <label for="firstNameValueInput" class="form-label">{% trans 'filterValueLabel' %}</label>
-                <input unicorn:model="filter_first_name" type="input" class="form-control" id="firstNameValueInput" />
-              </div>
+          <div class="row border rounded mt-1">
+            <div class="d-flex flex-wrap">
+                <div class="form-check form-switch m-2">
+                  <input unicorn:model="filter_first_name_en" class="form-check-input" type="checkbox" value="" id="firstNameCheckInput" />
+                  <label class="form-check-label" for="firstNameCheckInput">{% trans 'firstNameFilter' %}</label>
+                </div>
+                <div class="form-check form-switch m-2">
+                  <input unicorn:model="filter_last_name_en" class="form-check-input" type="checkbox" value="" id="lastLastCheckInput" />
+                  <label class="form-check-label" for="lastLastCheckInput">{% trans 'lastLastFilter' %}</label>
+                </div>
+                <div class="form-check form-switch m-2">
+                  <input unicorn:model="filter_region_en" class="form-check-input" type="checkbox" value="" id="regionCheckInput" />
+                  <label class="form-check-label" for="regionCheckInput">{% trans 'regionFilter' %}</label>
+                </div>
+                <div class="form-check form-switch m-2">
+                  <input unicorn:model="filter_club_en" class="form-check-input" type="checkbox" value="" id="clubCheckInput" />
+                  <label class="form-check-label" for="clubCheckInput">{% trans 'clubFilter' %}</label>
+                </div>
+                <div class="form-check form-switch m-2">
+                  <input unicorn:model="filter_email_en" class="form-check-input" type="checkbox" value="" id="emailCheckInput" />
+                  <label class="form-check-label" for="emailCheckInput">{% trans 'emailFilter' %}</label>
+                </div>
+                <div class="form-check form-switch m-2">
+                  <input unicorn:model="filter_postcode_en" class="form-check-input" type="checkbox" value="" id="postcodeCheckInput" />
+                  <label class="form-check-label" for="postcodeCheckInput">{% trans 'postcodeFilter' %}</label>
+                </div>
+                <div class="form-check form-switch m-2">
+                  <input unicorn:model="filter_city_en" class="form-check-input" type="checkbox" value="" id="cityCheckInput" />
+                  <label class="form-check-label" for="cityCheckInput">{% trans 'cityFilter' %}</label>
+                </div>
             </div>
-            <!-- Last Name Filter -->
-            <div class="row border rounded mt-1">
-              <div class="col col-lg-2 mb-2 mt-4">
-                <input unicorn:model="filter_last_name_en" class="form-check-input" type="checkbox" value="" id="lastNameCheckInput" />
-                <label class="form-check-label" for="lastNameCheckInput">{% trans 'LastNameFilter' %}</label>
+          </div>
+          
+          {% if filter_first_name_en %}
+             <!-- First Name Filter -->
+             <div class="row border rounded mt-1" id="filter_first_name">
+              <div class="col col-lg-2 my-2">
+                  <label class="form-check-label" for="firstNameCheckInput">{% trans 'firstNameFilter' %}</label>
               </div>
-              <div class="col col-lg-2 mb-2">
-                <label for="lastNameOperatorInput" class="form-label">{% trans 'filterTypLabel' %}</label>
-                <select unicorn:model="filter_opt_last_name" class="form-select" id="lastNameOperatorInput">
-                  {% for option in operator_options %}
-                    <option value="{{ option }}">
-                      {% trans option %}
-                    </option>
-                  {% endfor %}
-                </select>
-              </div>
-              <div class="col col-lg-8 mb-2">
-                <label for="lastNameValueInput" class="form-label">{% trans 'filterValueLabel' %}</label>
-                <input unicorn:model="filter_last_name" type="input" class="form-control" id="lastNameValueInput" />
-              </div>
+                <div class="col col-lg-4 my-2">
+                  <div class="input-group">
+                    <span class="input-group-text">{% trans 'filterTypLabel' %}</span>
+                    <select unicorn:model="filter_opt_first_name" class="form-select" id="firstNameOperatorInput">
+                      {% for option in operator_options %}
+                        <option value="{{ option }}">
+                          {% trans option %}
+                        </option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                </div>
+                <div class="col col-lg-6 my-2">
+                  <div class="input-group">
+                    <span class="input-group-text">{% trans 'filterValueLabel' %}</span>
+                    <input unicorn:model.debounce-1000="filter_first_name" type="input" class="form-control" />
+                  </div>
+                </div>
             </div>
+          {% endif %}
+
+          {% if filter_last_name_en %}
+             <!-- Last Name Filter -->
+             <div class="row border rounded mt-1" id="filter_last_name">
+              <div class="col col-lg-2 my-2">
+                  <label class="form-check-label" for="lastNameCheckInput">{% trans 'lastNameFilter' %}</label>
+              </div>
+                <div class="col col-lg-4 my-2">
+                  <div class="input-group">
+                    <span class="input-group-text">{% trans 'filterTypLabel' %}</span>
+                    <select unicorn:model="filter_opt_last_name" class="form-select" id="lastNameOperatorInput">
+                      {% for option in operator_options %}
+                        <option value="{{ option }}">
+                          {% trans option %}
+                        </option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                </div>
+                <div class="col col-lg-6 my-2">
+                  <div class="input-group">
+                    <span class="input-group-text">{% trans 'filterValueLabel' %}</span>
+                    <input unicorn:model.debounce-1000="filter_last_name" type="input" class="form-control" id="lastNameValueInput" />
+                  </div>
+                </div>
+            </div>
+          {% endif %}
+            
+          {% if filter_region_en %}
+             <!-- Last Name Filter -->
+             <div class="row border rounded mt-1">
+              <div class="col col-lg-2 my-2">
+                  <label class="form-check-label">{% trans 'regionFilter' %}</label>
+              </div>
+                <div class="col col-lg-10 my-2">
+                  <div class="input-group">
+                    <span class="input-group-text">{% trans 'filterValueLabel' %}</span>
+                    <select unicorn:model="filter_region" class="form-select">
+                      {% for regi in regions %}
+                        <option value="{{ regi }}">
+                          {{ regi }}
+                        </option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                </div>
+            </div>
+          {% endif %}
+
+          {% if filter_club_en %}
+             <!-- Last Name Filter -->
+             <div class="row border rounded mt-1">
+              <div class="col col-lg-2 my-2">
+                  <label class="form-check-label">{% trans 'clubFilter' %}</label>
+              </div>
+                <div class="col col-lg-4 my-2">
+                  <div class="input-group">
+                    <span class="input-group-text">{% trans 'filterTypLabel' %}</span>
+                    <select unicorn:model="filter_opt_club" class="form-select">
+                      {% for option in operator_options %}
+                        <option value="{{ option }}">
+                          {% trans option %}
+                        </option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                </div>
+                <div class="col col-lg-6 my-2">
+                  <div class="input-group">
+                    <span class="input-group-text">{% trans 'filterValueLabel' %}</span>
+                    <input unicorn:model.debounce-1000="filter_club" type="input" class="form-control" />
+                  </div>
+                </div>
+            </div>
+          {% endif %}
+
+          {% if filter_email_en %}
+             <!-- Last Name Filter -->
+             <div class="row border rounded mt-1">
+              <div class="col col-lg-2 my-2">
+                  <label class="form-check-label">{% trans 'emailFilter' %}</label>
+              </div>
+                <div class="col col-lg-4 my-2">
+                  <div class="input-group">
+                    <span class="input-group-text">{% trans 'filterTypLabel' %}</span>
+                    <select unicorn:model="filter_opt_email" class="form-select">
+                      {% for option in operator_options %}
+                        <option value="{{ option }}">
+                          {% trans option %}
+                        </option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                </div>
+                <div class="col col-lg-6 my-2">
+                  <div class="input-group">
+                    <span class="input-group-text">{% trans 'filterValueLabel' %}</span>
+                    <input unicorn:model.debounce-1000="filter_email" type="input" class="form-control" />
+                  </div>
+                </div>
+            </div>
+          {% endif %}
+
+          {% if filter_postcode_en %}
+             <!-- Last Name Filter -->
+             <div class="row border rounded mt-1">
+              <div class="col col-lg-2 my-2">
+                  <label class="form-check-label">{% trans 'postcodeFilter' %}</label>
+              </div>
+                <div class="col col-lg-4 my-2">
+                  <div class="input-group">
+                    <span class="input-group-text">{% trans 'filterTypLabel' %}</span>
+                    <select unicorn:model="filter_opt_postcode" class="form-select">
+                      {% for option in operator_options %}
+                        <option value="{{ option }}">
+                          {% trans option %}
+                        </option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                </div>
+                <div class="col col-lg-6 my-2">
+                  <div class="input-group">
+                    <span class="input-group-text">{% trans 'filterValueLabel' %}</span>
+                    <input unicorn:model.debounce-1000="filter_postcode" type="input" class="form-control" />
+                  </div>
+                </div>
+            </div>
+          {% endif %}
+
+          {% if filter_city_en %}
+             <!-- Last Name Filter -->
+             <div class="row border rounded mt-1">
+              <div class="col col-lg-2 my-2">
+                  <label class="form-check-label">{% trans 'cityFilter' %}</label>
+              </div>
+                <div class="col col-lg-4 my-2">
+                  <div class="input-group">
+                    <span class="input-group-text">{% trans 'filterTypLabel' %}</span>
+                    <select unicorn:model="filter_opt_city" class="form-select">
+                      {% for option in operator_options %}
+                        <option value="{{ option }}">
+                          {% trans option %}
+                        </option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                </div>
+                <div class="col col-lg-6 my-2">
+                  <div class="input-group">
+                    <span class="input-group-text">{% trans 'filterValueLabel' %}</span>
+                    <input unicorn:model.debounce-1000="filter_city" type="input" class="form-control" />
+                  </div>
+                </div>
+            </div>
+          {% endif %}
+
           </div>
       </div>
     </div>
