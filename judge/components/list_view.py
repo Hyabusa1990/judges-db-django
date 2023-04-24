@@ -113,6 +113,7 @@ class ListViewView(UnicornView):
                 usr = usr.filter(judge__postcode__iexact=self.filter_postcode)
 
         # filter postcode range
+        # TODO: bei nicht vorhandener PLZ Fehler ausgeben. (Funktion gibt ValueError)
         if self.filter_postcode_range_en:
             usr_in_range = []
             for u in usr:

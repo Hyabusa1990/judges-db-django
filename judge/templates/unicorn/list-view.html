@@ -21,7 +21,7 @@
                 </div>
                 <div class="form-check form-switch m-2">
                   <input unicorn:model="filter_last_name_en" class="form-check-input" type="checkbox" value="" id="lastLastCheckInput" />
-                  <label class="form-check-label" for="lastLastCheckInput">{% trans 'lastLastFilter' %}</label>
+                  <label class="form-check-label" for="lastLastCheckInput">{% trans 'lastNameFilter' %}</label>
                 </div>
                 <div class="form-check form-switch m-2">
                   <input unicorn:model="filter_region_en" class="form-check-input" type="checkbox" value="" id="regionCheckInput" />
@@ -216,13 +216,13 @@
                 <div class="col col-lg-5 my-2">
                     <div class="input-group">
                       <span class="input-group-text">{% trans 'filterPlzLabel' %}</span>
-                      <input unicorn:model.debounce-1000="filter_postcode_range_plz" type="input" class="form-control" />
+                      <input unicorn:model.debounce-1000="filter_postcode_range_plz" type="number" class="form-control" />
                     </div>
                 </div>
                 <div class="col col-lg-5 my-2">
                   <div class="input-group">
-                    <span class="input-group-text">{% trans 'filterValueLabel' %}</span>
-                    <input unicorn:model.debounce-1000="filter_postcode_range" type="input" class="form-control" />
+                    <span class="input-group-text">{% trans 'filterPlzRange' %}</span>
+                    <input unicorn:model.debounce-1000="filter_postcode_range" type="number" class="form-control" />
                   </div>
                 </div>
             </div>

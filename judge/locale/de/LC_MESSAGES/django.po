@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-15 00:25+0200\n"
+"POT-Creation-Date: 2023-04-24 21:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,23 +17,24 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
 #: .\templates\judge\details.html:4
 msgid "DetailTitle"
 msgstr "Kampfrichterdetails"
 
-#: .\templates\judge\details.html:8
+#: .\templates\judge\details.html:7
 msgid "DetailSubTitle"
 msgstr "Persönliche Informationen des Kampfrichters"
 
-#: .\templates\judge\details.html:12
+#: .\templates\judge\details.html:13
 msgid "PersonalDataTitle"
 msgstr "Persönliche Daten"
 
-#: .\templates\judge\details.html:14
+#: .\templates\judge\details.html:15
 msgid "FirstNameLabel"
 msgstr "Vorname"
 
-#: .\templates\judge\details.html:16
+#: .\templates\judge\details.html:17
 msgid "LastNameLabel"
 msgstr "Nachname"
 
@@ -69,6 +70,107 @@ msgstr "Verein"
 msgid "RegionLabel"
 msgstr "Landesverband"
 
-#: .\templates\judge\details.html:50
+#: .\templates\judge\details.html:49
 msgid "LicencesDataTitle"
 msgstr "Lizenzen"
+
+#: .\templates\judge\list.html:5
+msgid "ListTitle"
+msgstr "Kampfrichter Übersicht"
+
+#: .\templates\judge\list.html:8
+msgid "ListSubTitle"
+msgstr "Übersicht aller Kampfrichter"
+
+#: .\templates\unicorn\list-view.html:6
+msgid "ListFilterTitle"
+msgstr "Filter/Suche"
+
+#: .\templates\unicorn\list-view.html:20 .\templates\unicorn\list-view.html:58
+msgid "firstNameFilter"
+msgstr "Vorname"
+
+#: .\templates\unicorn\list-view.html:24 .\templates\unicorn\list-view.html:85
+msgid "lastNameFilter"
+msgstr "Nachname"
+
+#: .\templates\unicorn\list-view.html:28 .\templates\unicorn\list-view.html:112
+msgid "regionFilter"
+msgstr "Landesverband"
+
+#: .\templates\unicorn\list-view.html:32 .\templates\unicorn\list-view.html:133
+msgid "clubFilter"
+msgstr "Verein"
+
+#: .\templates\unicorn\list-view.html:36 .\templates\unicorn\list-view.html:160
+msgid "emailFilter"
+msgstr "E-Mail"
+
+#: .\templates\unicorn\list-view.html:40 .\templates\unicorn\list-view.html:187
+msgid "postcodeFilter"
+msgstr "PLZ"
+
+#: .\templates\unicorn\list-view.html:44 .\templates\unicorn\list-view.html:214
+msgid "postcodeRangeFilter"
+msgstr "Umkreis"
+
+#: .\templates\unicorn\list-view.html:48 .\templates\unicorn\list-view.html:235
+msgid "cityFilter"
+msgstr "Stadt"
+
+#: .\templates\unicorn\list-view.html:50
+msgid "btnFilter"
+msgstr "Filter anwenden"
+
+#: .\templates\unicorn\list-view.html:62 .\templates\unicorn\list-view.html:89
+#: .\templates\unicorn\list-view.html:137
+#: .\templates\unicorn\list-view.html:164
+#: .\templates\unicorn\list-view.html:191
+#: .\templates\unicorn\list-view.html:239
+msgid "filterTypLabel"
+msgstr "Filterart"
+
+#: .\templates\unicorn\list-view.html:74 .\templates\unicorn\list-view.html:101
+#: .\templates\unicorn\list-view.html:116
+#: .\templates\unicorn\list-view.html:149
+#: .\templates\unicorn\list-view.html:176
+#: .\templates\unicorn\list-view.html:203
+#: .\templates\unicorn\list-view.html:251
+msgid "filterValueLabel"
+msgstr "Filtertext"
+
+#: .\templates\unicorn\list-view.html:218
+msgid "filterPlzLabel"
+msgstr "PLZ"
+
+#: .\templates\unicorn\list-view.html:224
+msgid "filterPlzRange"
+msgstr "Umkreis in km"
+
+#: .\templates\unicorn\list-view.html:264
+msgid "ListJudgesTitle"
+msgstr "Kampfrichter"
+
+#: .\templates\unicorn\list-view.html:270
+msgid "ListTableNameTitle"
+msgstr "Name"
+
+#: .\templates\unicorn\list-view.html:273
+msgid "ListTableRegionTitle"
+msgstr "Landesverband"
+
+#: .\templates\unicorn\list-view.html:276
+msgid "ListTableActionTitle"
+msgstr "Aktionen"
+
+msgid "contains"
+msgstr "enthält"
+
+msgid "startswith"
+msgstr "beginnt"
+
+msgid "endswith"
+msgstr "endet"
+
+msgid "exact"
+msgstr "genau"
