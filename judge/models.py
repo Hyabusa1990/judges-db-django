@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from regions.models import Region
+from judge.geodb import distance
 
 
 class Club(models.Model):
@@ -27,6 +28,12 @@ class Judge(models.Model):
 
     def __str__(self):
         return self.user.get_full_name()
+
+    def is_in_range(self, plz, range):
+        if distance(plz, self.postcode) < int(range) * 1000:
+            return True
+        else:
+            return False
 
 
 @receiver(post_save, sender=User)

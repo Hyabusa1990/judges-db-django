@@ -40,6 +40,10 @@
                   <label class="form-check-label" for="postcodeCheckInput">{% trans 'postcodeFilter' %}</label>
                 </div>
                 <div class="form-check form-switch m-2">
+                  <input unicorn:model="filter_postcode_range_en" class="form-check-input" type="checkbox" value="" id="postcodeRangeCheckInput" />
+                  <label class="form-check-label" for="postcodeRangeCheckInput">{% trans 'postcodeRangeFilter' %}</label>
+                </div>
+                <div class="form-check form-switch m-2">
                   <input unicorn:model="filter_city_en" class="form-check-input" type="checkbox" value="" id="cityCheckInput" />
                   <label class="form-check-label" for="cityCheckInput">{% trans 'cityFilter' %}</label>
                 </div>
@@ -198,6 +202,27 @@
                   <div class="input-group">
                     <span class="input-group-text">{% trans 'filterValueLabel' %}</span>
                     <input unicorn:model.debounce-1000="filter_postcode" type="input" class="form-control" />
+                  </div>
+                </div>
+            </div>
+          {% endif %}
+
+          {% if filter_postcode_range_en %}
+             <!-- Last Name Filter -->
+             <div class="row border rounded mt-1">
+              <div class="col col-lg-2 my-2">
+                  <label class="form-check-label">{% trans 'postcodeRangeFilter' %}</label>
+              </div>
+                <div class="col col-lg-5 my-2">
+                    <div class="input-group">
+                      <span class="input-group-text">{% trans 'filterPlzLabel' %}</span>
+                      <input unicorn:model.debounce-1000="filter_postcode_range_plz" type="input" class="form-control" />
+                    </div>
+                </div>
+                <div class="col col-lg-5 my-2">
+                  <div class="input-group">
+                    <span class="input-group-text">{% trans 'filterValueLabel' %}</span>
+                    <input unicorn:model.debounce-1000="filter_postcode_range" type="input" class="form-control" />
                   </div>
                 </div>
             </div>

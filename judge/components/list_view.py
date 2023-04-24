@@ -38,6 +38,10 @@ class ListViewView(UnicornView):
     filter_opt_city = "contains"
     filter_city_en = False
 
+    filter_postcode_range = ""
+    filter_postcode_range_plz = ""
+    filter_postcode_range_en = False
+
     def toggle_filters(self):
         self.show_filters = not self.show_filters
 
@@ -107,6 +111,15 @@ class ListViewView(UnicornView):
                     judge__postcode__iendswith=self.filter_postcode)
             elif self.filter_opt_postcode == "exact":
                 usr = usr.filter(judge__postcode__iexact=self.filter_postcode)
+
+        # filter postcode range
+        if self.filter_postcode_range_en:
+            usr_in_range = []
+            for u in usr:
+                if u.judge.is_in_range(self.filter_postcode_range_plz, self.filter_postcode_range):
+                    usr_in_range.append(u.pk)
+            print(usr_in_range)
+            usr = usr.filter(pk__in=usr_in_range)
 
         # filter city
         if self.filter_city_en:
