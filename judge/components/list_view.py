@@ -42,87 +42,96 @@ class ListViewView(UnicornView):
         self.show_filters = not self.show_filters
 
     def filter_judge(self):
-        usr = User.objects.all()
+        usr = self.get_managed_judges()
         # filter first_name
         if self.filter_first_name_en:
-            if self.filter_opt_first_name is "contains":
+            if self.filter_opt_first_name == "contains":
                 usr = usr.filter(first_name__icontains=self.filter_first_name)
-            elif self.filter_opt_first_name is "startswith":
+            elif self.filter_opt_first_name == "startswith":
                 usr = usr.filter(
                     first_name__istartswith=self.filter_first_name)
-            elif self.filter_opt_first_name is "endswith":
+            elif self.filter_opt_first_name == "endswith":
                 usr = usr.filter(first_name__iendswith=self.filter_first_name)
-            elif self.filter_opt_first_name is "exact":
+            elif self.filter_opt_first_name == "exact":
                 usr = usr.filter(first_name__iexact=self.filter_first_name)
 
         # filter last_name
         if self.filter_last_name_en:
-            if self.filter_opt_last_name is "contains":
+            if self.filter_opt_last_name == "contains":
                 usr = usr.filter(last_name__icontains=self.filter_last_name)
-            elif self.filter_opt_last_name is "startswith":
+            elif self.filter_opt_last_name == "startswith":
                 usr = usr.filter(
                     last_name__istartswith=self.filter_last_name)
-            elif self.filter_opt_last_name is "endswith":
+            elif self.filter_opt_last_name == "endswith":
                 usr = usr.filter(last_name__iendswith=self.filter_last_name)
-            elif self.filter_opt_last_name is "exact":
+            elif self.filter_opt_last_name == "exact":
                 usr = usr.filter(last_name__iexact=self.filter_last_name)
 
         # filter region
         if self.filter_region_en:
-            usr = usr.filter(judge__region__icontains=self.filter_region)
+            usr = usr.filter(judge__region__name__icontains=self.filter_region)
 
         # filter club
         if self.filter_club_en:
-            if self.filter_opt_club is "contains":
+            if self.filter_opt_club == "contains":
                 usr = usr.filter(judge__club__icontains=self.filter_club)
-            elif self.filter_opt_club is "startswith":
+            elif self.filter_opt_club == "startswith":
                 usr = usr.filter(judge__club__istartswith=self.filter_club)
-            elif self.filter_opt_club is "endswith":
+            elif self.filter_opt_club == "endswith":
                 usr = usr.filter(judge__club__iendswith=self.filter_club)
-            elif self.filter_opt_club is "exact":
+            elif self.filter_opt_club == "exact":
                 usr = usr.filter(judge__club__iexact=self.filter_club)
 
         # filter email
         if self.filter_email_en:
-            if self.filter_opt_email is "contains":
+            if self.filter_opt_email == "contains":
                 usr = usr.filter(email__icontains=self.filter_email)
-            elif self.filter_opt_email is "startswith":
+            elif self.filter_opt_email == "startswith":
                 usr = usr.filter(
                     email__istartswith=self.filter_email)
-            elif self.filter_opt_email is "endswith":
+            elif self.filter_opt_email == "endswith":
                 usr = usr.filter(email__iendswith=self.filter_email)
-            elif self.filter_opt_email is "exact":
+            elif self.filter_opt_email == "exact":
                 usr = usr.filter(email__iexact=self.filter_email)
 
          # filter postcode
         if self.filter_postcode_en:
-            if self.filter_opt_postcode is "contains":
+            if self.filter_opt_postcode == "contains":
                 usr = usr.filter(
                     judge__postcode__icontains=self.filter_postcode)
-            elif self.filter_opt_postcode is "startswith":
+            elif self.filter_opt_postcode == "startswith":
                 usr = usr.filter(
                     judge__postcode__istartswith=self.filter_postcode)
-            elif self.filter_opt_postcode is "endswith":
+            elif self.filter_opt_postcode == "endswith":
                 usr = usr.filter(
                     judge__postcode__iendswith=self.filter_postcode)
-            elif self.filter_opt_postcode is "exact":
+            elif self.filter_opt_postcode == "exact":
                 usr = usr.filter(judge__postcode__iexact=self.filter_postcode)
 
         # filter city
         if self.filter_city_en:
-            if self.filter_opt_city is "contains":
+            if self.filter_opt_city == "contains":
                 usr = usr.filter(judge__city__icontains=self.filter_city)
-            elif self.filter_opt_city is "startswith":
+            elif self.filter_opt_city == "startswith":
                 usr = usr.filter(judge__city__istartswith=self.filter_city)
-            elif self.filter_opt_city is "endswith":
+            elif self.filter_opt_city == "endswith":
                 usr = usr.filter(judge__city__iendswith=self.filter_city)
-            elif self.filter_opt_city is "exact":
+            elif self.filter_opt_city == "exact":
                 usr = usr.filter(judge__city__iexact=self.filter_city)
 
         self.user_filtered = usr
 
-    def updating(self, name, value):
-        self.filter_judge()
+    def get_managed_judges(self):
+        usr = User.objects.all()
+
+        if self.request.user.is_superuser:
+            return usr
+        else:
+            usrTMP = User.objects.none()
+            for reg in self.request.user.judge.managed_regions.all():
+                usrTMP = usrTMP | usr.filter(
+                    judge__region__name__icontains=reg.name)
+            return usrTMP
 
     def mount(self):
         self.filter_judge()

@@ -1,7 +1,4 @@
-from django.http import HttpResponseForbidden
-from django.shortcuts import render
 from django.contrib.auth.models import User
-from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import login_required, permission_required
 from django.utils.decorators import method_decorator
 from django.views.generic import DetailView, TemplateView
@@ -22,8 +19,7 @@ class JudgeDetailView(UserPassesTestMixin, DetailView):
         elif self.request.user.is_superuser:
             return True
         # if it's an manager -> allow
-        # TODO: check its an manager of the region of the judge
-        elif self.request.user.has_perm('judge.view_judge'):
+        elif self.request.user.has_perm('judge.view_judge') and self.request.user.judge.managed_regions.filter(pk=self.get_object().judge.region.pk).exists():
             return True
         # else -> deny
         else:
