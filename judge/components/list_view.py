@@ -1,5 +1,6 @@
 from django_unicorn.components import UnicornView
 from django.contrib.auth.models import User
+from django.contrib import messages
 
 
 class ListViewView(UnicornView):
@@ -113,14 +114,16 @@ class ListViewView(UnicornView):
                 usr = usr.filter(judge__postcode__iexact=self.filter_postcode)
 
         # filter postcode range
-        # TODO: bei nicht vorhandener PLZ Fehler ausgeben. (Funktion gibt ValueError)
         if self.filter_postcode_range_en:
-            usr_in_range = []
-            for u in usr:
-                if u.judge.is_in_range(self.filter_postcode_range_plz, self.filter_postcode_range):
-                    usr_in_range.append(u.pk)
-            print(usr_in_range)
-            usr = usr.filter(pk__in=usr_in_range)
+            try:
+                usr_in_range = []
+                for u in usr:
+                    if u.judge.is_in_range(self.filter_postcode_range_plz, self.filter_postcode_range):
+                        usr_in_range.append(u.pk)
+                print(usr_in_range)
+                usr = usr.filter(pk__in=usr_in_range)
+            except ValueError:
+                messages.error(self.request, "PLZ ist nicht korrekt")
 
         # filter city
         if self.filter_city_en:
@@ -147,6 +150,7 @@ class ListViewView(UnicornView):
                     judge__region__name__icontains=reg.name)
             return usrTMP
 
-    def mount(self):
+    def __init__(self, *args, **kwargs):
+        super().__init__(**kwargs)
         self.filter_judge()
         self.regions = self.request.user.judge.managed_regions.all()
