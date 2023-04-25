@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-24 21:50+0200\n"
+"POT-Creation-Date: 2023-04-25 17:19+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\components\list_view.py:127
+msgid "ErrorPLZMessage"
+msgstr "PLZ existiert nicht"
 
 #: .\templates\judge\details.html:4
 msgid "DetailTitle"
@@ -82,84 +86,84 @@ msgstr "Kampfrichter Übersicht"
 msgid "ListSubTitle"
 msgstr "Übersicht aller Kampfrichter"
 
-#: .\templates\unicorn\list-view.html:6
+#: .\templates\unicorn\list-view.html:16
 msgid "ListFilterTitle"
 msgstr "Filter/Suche"
 
-#: .\templates\unicorn\list-view.html:20 .\templates\unicorn\list-view.html:58
+#: .\templates\unicorn\list-view.html:30 .\templates\unicorn\list-view.html:68
 msgid "firstNameFilter"
 msgstr "Vorname"
 
-#: .\templates\unicorn\list-view.html:24 .\templates\unicorn\list-view.html:85
+#: .\templates\unicorn\list-view.html:34 .\templates\unicorn\list-view.html:95
 msgid "lastNameFilter"
 msgstr "Nachname"
 
-#: .\templates\unicorn\list-view.html:28 .\templates\unicorn\list-view.html:112
+#: .\templates\unicorn\list-view.html:38 .\templates\unicorn\list-view.html:122
 msgid "regionFilter"
 msgstr "Landesverband"
 
-#: .\templates\unicorn\list-view.html:32 .\templates\unicorn\list-view.html:133
+#: .\templates\unicorn\list-view.html:42 .\templates\unicorn\list-view.html:143
 msgid "clubFilter"
 msgstr "Verein"
 
-#: .\templates\unicorn\list-view.html:36 .\templates\unicorn\list-view.html:160
+#: .\templates\unicorn\list-view.html:46 .\templates\unicorn\list-view.html:170
 msgid "emailFilter"
 msgstr "E-Mail"
 
-#: .\templates\unicorn\list-view.html:40 .\templates\unicorn\list-view.html:187
+#: .\templates\unicorn\list-view.html:50 .\templates\unicorn\list-view.html:197
 msgid "postcodeFilter"
 msgstr "PLZ"
 
-#: .\templates\unicorn\list-view.html:44 .\templates\unicorn\list-view.html:214
+#: .\templates\unicorn\list-view.html:54 .\templates\unicorn\list-view.html:224
 msgid "postcodeRangeFilter"
 msgstr "Umkreis"
 
-#: .\templates\unicorn\list-view.html:48 .\templates\unicorn\list-view.html:235
+#: .\templates\unicorn\list-view.html:58 .\templates\unicorn\list-view.html:245
 msgid "cityFilter"
 msgstr "Stadt"
 
-#: .\templates\unicorn\list-view.html:50
+#: .\templates\unicorn\list-view.html:60
 msgid "btnFilter"
 msgstr "Filter anwenden"
 
-#: .\templates\unicorn\list-view.html:62 .\templates\unicorn\list-view.html:89
-#: .\templates\unicorn\list-view.html:137
-#: .\templates\unicorn\list-view.html:164
-#: .\templates\unicorn\list-view.html:191
-#: .\templates\unicorn\list-view.html:239
+#: .\templates\unicorn\list-view.html:72 .\templates\unicorn\list-view.html:99
+#: .\templates\unicorn\list-view.html:147
+#: .\templates\unicorn\list-view.html:174
+#: .\templates\unicorn\list-view.html:201
+#: .\templates\unicorn\list-view.html:249
 msgid "filterTypLabel"
 msgstr "Filterart"
 
-#: .\templates\unicorn\list-view.html:74 .\templates\unicorn\list-view.html:101
-#: .\templates\unicorn\list-view.html:116
-#: .\templates\unicorn\list-view.html:149
-#: .\templates\unicorn\list-view.html:176
-#: .\templates\unicorn\list-view.html:203
-#: .\templates\unicorn\list-view.html:251
+#: .\templates\unicorn\list-view.html:84 .\templates\unicorn\list-view.html:111
+#: .\templates\unicorn\list-view.html:126
+#: .\templates\unicorn\list-view.html:159
+#: .\templates\unicorn\list-view.html:186
+#: .\templates\unicorn\list-view.html:213
+#: .\templates\unicorn\list-view.html:261
 msgid "filterValueLabel"
 msgstr "Filtertext"
 
-#: .\templates\unicorn\list-view.html:218
+#: .\templates\unicorn\list-view.html:228
 msgid "filterPlzLabel"
 msgstr "PLZ"
 
-#: .\templates\unicorn\list-view.html:224
+#: .\templates\unicorn\list-view.html:234
 msgid "filterPlzRange"
 msgstr "Umkreis in km"
 
-#: .\templates\unicorn\list-view.html:264
+#: .\templates\unicorn\list-view.html:274
 msgid "ListJudgesTitle"
 msgstr "Kampfrichter"
 
-#: .\templates\unicorn\list-view.html:270
+#: .\templates\unicorn\list-view.html:280
 msgid "ListTableNameTitle"
 msgstr "Name"
 
-#: .\templates\unicorn\list-view.html:273
+#: .\templates\unicorn\list-view.html:283
 msgid "ListTableRegionTitle"
 msgstr "Landesverband"
 
-#: .\templates\unicorn\list-view.html:276
+#: .\templates\unicorn\list-view.html:286
 msgid "ListTableActionTitle"
 msgstr "Aktionen"
 

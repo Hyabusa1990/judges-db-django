@@ -1,6 +1,7 @@
 from django_unicorn.components import UnicornView
 from django.contrib.auth.models import User
 from django.contrib import messages
+from django.utils.translation import gettext as _
 
 
 class ListViewView(UnicornView):
@@ -39,8 +40,8 @@ class ListViewView(UnicornView):
     filter_opt_city = "contains"
     filter_city_en = False
 
-    filter_postcode_range = ""
-    filter_postcode_range_plz = ""
+    filter_postcode_range = "10"
+    filter_postcode_range_plz = "72663"
     filter_postcode_range_en = False
 
     def toggle_filters(self):
@@ -123,7 +124,7 @@ class ListViewView(UnicornView):
                 print(usr_in_range)
                 usr = usr.filter(pk__in=usr_in_range)
             except ValueError:
-                messages.error(self.request, "PLZ ist nicht korrekt")
+                messages.error(self.request, _("ErrorPLZMessage"))
 
         # filter city
         if self.filter_city_en:
